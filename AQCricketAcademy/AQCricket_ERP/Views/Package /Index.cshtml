@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Domain.Entities.Packages>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="container-fluid px-0">
+            <div class="row align-items-center position-relative">
+                <div class="col-md-8 mb-4 mb-md-0">
+                    <h5 class="mb-0">Packages</h5>             
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-between align-items-center">
+            <div class="col">
+                <div class="row align-items-center">
+                    <table id="PackagesTable" style="width:100%" class="table tableDt">
+                        <thead style="background-color:forestgreen">
+                            <tr style="color:white; text-align: center;">
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PackageName)
+                                </th>                              
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center;">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PackageName)
+                                    </td>                                  
+                                   
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--CREATE MODAL-->
+
+<partial name="~/Views/Shared/_DeleteModal.cshtml">
