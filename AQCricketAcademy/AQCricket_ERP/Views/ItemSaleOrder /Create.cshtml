@@ -1,0 +1,119 @@
+﻿@model Domain.Entities.ItemSaleOders
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+
+        <h4>Sale Order</h4>
+        <hr />
+    </div>
+    <div class="col-md-12">
+        <form id="SaleOrderForm">
+            <input type="hidden" asp-for="id" class="SaleOrderId" />
+            @*<input type="hidden" asp-for="CashDeliver" />*@
+            <input type="hidden" asp-for="CreatedAt" />         
+            <input type="hidden" asp-for="DeletedBy" />
+            <input type="hidden" asp-for="IsActive" />
+            <input type="hidden" asp-for="ItemCategoryId" class="ItemCategoryId" />
+            <div class="row">
+                @if (Model.id == 0)
+                {
+                    <div class="form-group col-lg-4">
+                        <label style="font-size: medium;" asp-for="SaleOrderCode" class="control-label">Order No</label>
+                        <input style="margin-top:5px;" value="@ViewBag.OrderNo" asp-for="SaleOrderCode" class="form-control SaleOrderCode" tabindex="-1" readonly />
+                        <span asp-validation-for="SaleOrderCode" class="text-danger"></span>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group col-lg-4">
+                        <label style="font-size: medium;" asp-for="SaleOrderCode" class="control-label">Order No</label>
+                        <input style="margin-top:5px;" asp-for="SaleOrderCode" class="form-control SaleOrderCode" tabindex="-1" readonly />
+                        <span asp-validation-for="SaleOrderCode" class="text-danger"></span>
+                    </div>
+                }
+                <div class="form-group col-lg-4">
+                    <label style="font-size: medium;" asp-for="PlayerId" class="control-label">Player</label>
+                    <select style="margin-top:5px;" asp-for="PlayerId" id="PlayerId" class="form-control accountcodedropdown PlayerId mandatory" asp-items="@ViewBag.PlayersList">
+                        <option value="" disabled selected>Select Player</option>
+                    </select>
+                </div>                
+            <br />
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="ibox-content">
+                    <table class="table table-striped table-responsive-sm">
+                        <thead>
+                            <tr class="text-white">
+                                <th style="background-color:green !important; width:400px;">
+                                    Item
+                                </th>
+                                <th style="background-color:green !important">
+                                    Quantity
+                                </th>
+                                <th style="background-color:green !important">
+                                    Unit Price
+                                </th>                              
+                            </tr>
+                        </thead>
+                        <tbody id="t-body">
+                            @if (Model.ItemSaleGoods == null)
+                            {
+                                <tr>
+                                    <td>
+                                        <select class="form-control form-select ItemId" asp-items="@ViewBag.ItemsList">
+                                            <option value="" disabled selected>Select Item</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input maxlength="13" type="number" min="0" value="0" class="form-control Quantity" />
+                                    </td>
+                                    <td>
+                                        <input type="number" value="0" min="0" class="form-control UnitPrice" />
+                                    </td>                                  
+                                </tr>
+                            }
+                            else
+                            {
+                                @foreach (var item in Model.ItemSaleGoods)
+                                {
+                                    <partial name="~/Views/ItemSaleOrder/_SaleGoods.cshtml" model="item"></partial>
+                                }
+                                @*<partial name="~/Views/ItemPurchaseOrder/_PurchaseGoods.cshtml" model="Model.ItemPurchaseGoods"></partial>*@
+                            }
+                            <tr>
+                                <td style="text-align:right;">
+                                    <b>Total Quantity :</b>
+                                </td>
+                                <td>
+                                    <input id="TotalQuantity" name="TotalQuantity" class="form-control TotalQuantity" tabindex="-1" readonly />
+                                </td>
+                                <td style="text-align:right;">
+                                    <b>Grand Total :</b>
+                                </td>
+                                <td>
+                                    <input id="TotalAmount" asp-for="TotalAmount" class="form-control TotalAmount" tabindex="-1" readonly />
+                                    <span asp-validation-for="TotalAmount" class="text-danger"></span>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>          
+        </form>
+    </div>
+</div>
+@section scripts{
+    <script src="~/js/ItemSaleOrder.js"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                $("#PlayerId").focus();
+            }, "1000")
+            CricketAcademy.ItemSaleOrder.Init();
+        });
+    </script>
+}
