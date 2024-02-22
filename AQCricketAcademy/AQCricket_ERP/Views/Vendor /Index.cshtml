@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Domain.Entities.Vendor>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="container-fluid px-0">
+            <div class="row align-items-center position-relative">
+                <div class="col-md-8 mb-4 mb-md-0">
+                    <h5 class="mb-0">Vendor</h5>
+                </div>
+                <div class="col-md-4 text-md-end">                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-between align-items-center">
+            <div class="col">
+                <div class="row align-items-center">
+                    <table class="table tableDt">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>                              
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VendorName)
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <a href="#" onclick="EditRecord(@item.id, '/Vendor/_Create', '#VendorFormModal', '#VendorForm')"> <i class="fas fa-pen" style="color: #162168; font-size:initial;"></i></a>
+                                            <a href="#" onclick="DeleteRecord(@item.id, '/Vendor/Delete')"><i class="fa fa-times-circle fa-lg text-danger"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--CREATE MODAL-->
+<div class="modal fade" id="VendorFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <form id="VendorForm" asp-action="Create" asp-controller="Vendor" data-ajax="true" data-ajax-method="post" data-ajax-complete="DuplicateVendor">
+    </form>
+</div>
+<!-- DeleteModal-->
+<partial name="~/Views/Shared/_DeleteModal.cshtml">
+@*<div class="modal fade" id="DeleteMember" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">               
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="text-align:center;">         
+                <div class="">
+                    Do you really want to delete this record?
+                </div>
+            </div>
+            <div class="modal-footer">               
+                <button type="button" id="ConfirmDelete" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>*@
