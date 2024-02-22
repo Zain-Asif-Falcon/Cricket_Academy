@@ -1,0 +1,39 @@
+﻿@model Domain.Entities.AccountCodes
+@{
+    Layout = null;
+}
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">        
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" asp-for="id" />
+            <input type="hidden" asp-for="CreatedAt" />
+            <input type="hidden" asp-for="CreatedBy" />          
+            <input type="hidden" asp-for="IsActive" />
+            <div class="form-group">
+                <label style="margin-top: 10px; font-size: medium;" asp-for="AccountHeadId" class="control-label mandatory">Account Head</label>
+                <select style="margin-top:5px;" asp-for="AccountHeadId" id="AccountHeadId"
+                        class="form-control form-select"
+                        asp-items="@ViewBag.AccountHeadsList"
+                        onchange="GetCodeByAccountHeadId()">
+                    <option value="" disabled selected>Select Account Head</option>
+                </select>
+            </div>            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" style="background-color: green">@(Model.id > 0 ? "Update" : "Save")</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        setTimeout(() => {
+            $("#AccountHeadId").focus();
+        }, "1000");
+    });   
+    }
+</script>
