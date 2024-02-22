@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Domain.Entities.AccountCodes>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <div class="card-header">
+                <div class="container-fluid px-0">
+                    <div class="row align-items-center position-relative">
+                        <div class="col-md-8 mb-4 mb-md-0">
+                            <h5 class="mb-0">Accounts</h5>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col">
+                        <div class="row align-items-center">
+                            <table class="table tableDt">
+                                <thead style="background-color:forestgreen">
+                                    <tr style="color:white; text-align: center;">
+                                        <th>
+                                            Account Code
+                                        </th>                                       
+                                        <th class="all">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody  style="text-align: center;">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.AccountCode)
+                                            </td>                                         
+
+                                            <td>
+                                                <div>
+                                                    <a href="#" onclick="EditRecord(@item.id, '/AccountCode/_Create', '#AccountCodeFormModal', '#AccountCodeForm')">
+                                                        <i class="fas fa-pen" style="color: green; font-size:initial;"></i>
+                                                    </a>                                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--CREATE MODAL-->
+
+        <div class="modal fade" data-backdrop="static" id="AccountCodeFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <form  data-ajax-method="post" data-ajax-complete="HandleErrorOnCompletionOfPostRequestFromForm">
+            </form>
+        </div>
+        <partial name="~/Views/Shared/_DeleteModal.cshtml">
+    </div>
+</div>
