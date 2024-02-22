@@ -1,0 +1,68 @@
+﻿@model List<Domain.DTO.NavigationMenuDTO>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h5>Update Role Permission</h5>
+    </div>
+    <div class="card-body">
+        <div id="jstree">
+        </div>
+        <form method="post" >
+            <input type="hidden" name="selectedItems" id="selectedItems" />
+            <div class="row">
+                <div class="col-lg-7"></div>               
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_content">            
+                    <div class="form-group">
+                        <ul style="list-style-type: none; display: grid; grid-template-columns: 2fr 2fr 2fr;">
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                                                <li>
+                                                    <input type="checkbox" asp-for="@Model[i].Permitted" />                                                 
+                                                    <input type="hidden" asp-for="@Model[i].Name" />
+                                                </li>
+                }
+
+                        </ul>-->
+
+                <div id="jstree">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var test = @Html.Raw(ViewBag.Json);
+        
+                //Serialize the JSON Array and save in HiddenField.
+                $('#selectedItems').val(JSON.stringify(selectedItems));
+            }).jstree({
+                "core": {
+                    "themes": {
+                        "variant": "large"
+                    },
+                    "data": test
+                },
+                "checkbox": {
+                    "keep_selected_style": false
+                },
+                "plugins": ["wholerow", "checkbox"],
+            });
+        });
+
+    </script>
+}
