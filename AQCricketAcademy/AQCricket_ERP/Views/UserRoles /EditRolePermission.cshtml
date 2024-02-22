@@ -41,28 +41,4 @@
         </div>
     </div>
 </div>
-@section scripts{
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            var test = @Html.Raw(ViewBag.Json);
-        
-                //Serialize the JSON Array and save in HiddenField.
-                $('#selectedItems').val(JSON.stringify(selectedItems));
-            }).jstree({
-                "core": {
-                    "themes": {
-                        "variant": "large"
-                    },
-                    "data": test
-                },
-                "checkbox": {
-                    "keep_selected_style": false
-                },
-                "plugins": ["wholerow", "checkbox"],
-            });
-        });
 
-    </script>
-}
