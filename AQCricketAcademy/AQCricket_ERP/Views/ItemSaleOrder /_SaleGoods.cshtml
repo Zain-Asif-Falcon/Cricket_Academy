@@ -1,0 +1,16 @@
+﻿@model Domain.Entities.ItemSaleGoods
+<tr>
+    <td>
+        <input type="hidden" value="@Model.id" class="ItemSaleGoodId" />
+        <input type="hidden" asp-for="SaleOrderId" class="SaleOrderId" />
+        <select asp-for="ItemId" class="form-control form-select ItemId" asp-items="@ViewBag.ItemsList">
+            <option value="" disabled selected>Select Item</option>
+        </select>
+    </td>
+    <td>
+        <input maxlength="13" type="number" min="0" asp-for="quantity" class="form-control Quantity" />
+    </td>
+<td>
+        <a href="javascript:;" id="RemoveItem"><i class="fa fa-trash fa-lg text-danger"></i></a>
+    </td>
+</tr>
