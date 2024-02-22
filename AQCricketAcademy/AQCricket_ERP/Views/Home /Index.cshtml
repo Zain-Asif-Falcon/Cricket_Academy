@@ -1,0 +1,359 @@
+﻿@model Domain.DTO.HomeDTO;
+@using Domain.Enums;
+
+<div class="row">
+    <!--Sparkline charts-->
+    <div class="col-lg one-padding">
+        <div class="card-body card bg-c-yellow rounded-3 me-3">
+            <div class="row align-items-center">
+                <div class="col" style="text-align:center;">
+                    <span class="d-block mb-2 text-white small text-uppercase fw-bold">Riders</span>
+                    @*<h4 class="mb-0">@Html.DisplayFor(model => model.TotalRiders)</h4>*@
+                </div>               
+        </div>
+    </div>
+
+    <div class="col-lg one-padding">
+        <div class="card-body card bg-c-pink rounded-3 me-3">
+            <div class="row align-items-center">
+                <div class="col" style="text-align:center;">
+                    <span class="d-block mb-2 text-white small text-uppercase fw-bold">Horse Owners</span>
+                    @*<h4 class="mb-0">@Html.DisplayFor(model => model.TotalHorseOwners)</h4>*@
+                </div>
+                <div class="flex-shrink-0 size-40 bg-warning text-white rounded-3 me-3 d-flex align-items-center justify-content-center">
+                    <i data-feather="users" class="fe-3x d-block"></i>
+                </div>
+                @*<div class="flex-grow-1 text-end">
+                <i data-feather="trending-down" class="fe-1x text-danger me-2"></i>
+                <span>-9%</span>
+                </div>*@
+            </div>
+            @*<div id="spark-expenses"></div>*@
+        </div>
+    </div>
+    <div class="col-lg one-padding">
+        <div class="card-body card bg-c-orenge rounded-3 me-3">
+            <div class="row align-items-center">
+                <div class="col" style="text-align:center;">
+                    <span class="d-block mb-2 text-white small text-uppercase fw-bold">Horses</span>
+                    @*<h4 class="mb-0">@Html.DisplayFor(model => model.TotalHorses)</h4>*@
+                </div>
+                <div class="flex-shrink-0 size-40 bg-info text-white rounded-3 me-3 d-flex align-items-center justify-content-center">
+                    <i style="font-size:25px;" class="fas fa-horse-head d-block"></i>
+                </div>
+                @*<div class="flex-grow-1 text-end">
+                <i data-feather="trending-up" class="fe-1x text-success me-2"></i>
+                <span>5%</span>
+                </div>*@
+            </div>
+            @*<div id="spark-sales"></div>*@
+        </div>
+    </div>
+    <div class="col-lg one-padding">
+        <div class="card-body card bg-c-blue rounded-3 me-3">
+            <div class="row align-items-center">
+                <div class="col" style="text-align:center;">
+                    <span class="d-block mb-2 text-white small text-uppercase fw-bold">Purchases (Rs)</span>
+                    <h4 class="mb-0">@Html.DisplayFor(model => model.TotalPurchases)</h4>
+                </div>
+                <div class="flex-shrink-0 size-40 bg-dark text-white rounded-3 me-3 d-flex align-items-center justify-content-center">
+                    <i data-feather="shopping-bag" class="fe-3x d-block"></i>
+                </div>
+            </div>
+            @*<div id="spark-bounce"></div>*@
+        </div>
+    </div>    
+<div class="row">
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+
+            <!--Card title-->
+            <div class="card-header d-flex justify-content-between">
+                <h5 class="mb-0 me-3">
+                    Last Five Riders
+                </h5>
+                <a href="~/RiderMembership/index">View All</a>
+            </div>
+
+            <div class="card-body">
+                <!--List-->
+                <ul class="list-group list-group-flush">
+
+                    <!--List group item-->
+                    <!--<li class="list-group-item pt-0">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <a href="#!" class="">
+                                    <div class="avatar avatar-status status-online">
+                                        <img src="/assets/media/avatars/04.jpg" class="img-fluid rounded-circle w-auto" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <h6 class="mb-0"><a href="#!.html">Jason Holder</a></h6>
+                                <small class="text-muted">jholder@gmail.com</small>
+                            </div>
+                            <div class="col-auto">
+                                <a href="#!.html" class="btn btn-sm btn-outline-light text-muted border">Add</a>
+                            </div>
+                        </div>
+                    </li>-->                   
+                    <!--List group item-->
+                    @*@foreach (var item in Model.RiderAttendaces)*@
+                    {
+
+
+                            <li class="list-group-item">
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <a href="#!" class="">
+                                            <div class="avatar">
+                                            @*@if (item.RiderMemberShip.Gender == "M")*@
+                                            {
+                                                @*@if (item.RiderMemberShip.ProfilePicture == null)*@
+                                                {
+                                                                <img src="/assets/media/avatars/09.jpg" class="img-fluid rounded-circle w-auto" alt="">
+                                                }
+                                                else
+                                                {
+                                                                @*<img src="@item.RiderMemberShip.ProfilePicture" class="img-fluid rounded-circle w-auto" alt="">*@
+                                                }
+                                            }
+                                            else
+                                            {
+                                                @*@if (item.RiderMemberShip.ProfilePicture == null)*@
+                                                {
+                                                                <img src="/assets/media/avatars/10.jpg" class="img-fluid rounded-circle w-auto" alt="">
+                                                }
+                                                else
+                                                {
+                                                                @*<img src="@item.RiderMemberShip.ProfilePicture" class="img-fluid rounded-circle w-auto" alt="">*@
+                                                }
+                                            }
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        @*<h6 class="mb-0"><a>@item.RiderMemberShip.RiderName</a></h6>*@
+                                        @*<small class="text-muted">@item.RiderMemberShip.ContactNo</small>*@
+                                    </div>
+                                    <div class="col-auto">
+                                    @*<a href="#!.html" class="btn btn-sm btn-outline-light text-muted border">Add</a>*@
+                                    @*@item.In.ToString("dd/MM/yyyy"), @item.In.ToString("HH:mm")*@
+                                    </div>
+                                </div>
+                            </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 overflow-hidden">
+            <div class="d-flex card-header justify-content-between align-items-center">
+                <h6 class="pe-3 mb-0">Packages</h6>
+                <!--Select Period of data showing-->
+            </div>
+            <div class="card-body">
+                <div id="chart-radial-bar"></div>
+                <ul id="chart-categories" class="row list-unstyled mb-0">
+                    @*<li class="col-4 text-center">
+                    <span class="d-flex justify-content-center text-center align-items-center">
+                    <span class="size-10 rounded-pill bg-success me-2 align-middle d-inline-block"></span>
+                    <span class="text-muted">Organic</span>
+                    </span>
+                    <span class="fs-4">36%</span>
+                    </li>                  
+                    <li class="col-4 text-center">
+                    <span class="d-flex justify-content-center text-center align-items-center">
+                    <span class="size-10 rounded-pill bg-primary me-2 align-middle d-inline-block"></span>
+                    <span class="text-muted">Referral</span>
+                    </span>
+                    <span class="fs-4">16%</span>
+                    </li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-md-6 mb-4">
+        <div class="position-relative h-100 card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Recent Five Inventory Purchases</h5>
+            </div>
+
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    @*@foreach (var item in Model.InventoryPurchaseOrders)*@
+                    {
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="d-flex align-items-center">
+                                    @*<div class="flex-shrink-0 me-4 text-danger">
+                                <i class="fe-1x" data-feather="arrow-up"></i>
+                                </div>*@                                       
+                                    </div>
+                                    <div class="d-flex align-items-center text-gradient text-sm font-weight-bold ms-auto">
+                                    @*@item.PurchasePrice Rs*@
+                                    </div>
+                                </div>
+                            </li>
+                    }
+                    @*<li class="list-group-item">
+                    <div class="d-flex">
+                    <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0 me-4 text-success">
+                    <i class="fe-1x" data-feather="arrow-down"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                    <h6 class="mb-1 text-dark text-sm">Paypal</h6>
+                    <small class="text-muted">16 Aug 2021, 12:02am</small>
+                    </div>
+                    </div>
+                    <div class="d-flex align-items-center text-success ms-auto">
+                    + $ 12,474
+                    </div>
+                    </div>
+                    </li>
+                    <li class="list-group-item">
+                    <div class="d-flex">
+                    <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0 me-4 text-danger">
+                    <i class="fe-1x" data-feather="arrow-up"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                    <h6 class="mb-1 text-dark text-sm">Visa Card ending **62</h6>
+                    <small class="text-muted">24 May 2021, 3:40pm</small>
+                    </div>
+                    </div>
+                    <div class="d-flex align-items-center text-danger ms-auto">
+                    - $ 199
+                    </div>
+                    </div>
+                    </li>
+                    <li class="list-group-item pb-0">
+                    <div class="d-flex">
+                    <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0 me-4 text-success">
+                    <i class="fe-1x" data-feather="arrow-down"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                    <h6 class="mb-1 text-dark text-sm">Adam Voges</h6>
+                    <small class="text-muted">12 May 2021, 3:40pm</small>
+                    </div>
+                    </div>
+                    <div class="d-flex align-items-center text-success ms-auto">
+                    + $ 847
+                    </div>
+                    </div>
+                    </li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 mb-4">
+        <div class="position-relative h-100 card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Recent Five Inventory Sales</h5>
+                @*<a href="~/ItemSaleOrder/index?id=@((int)RiderEnums.CategoryTypes.Inventory)">View All</a>*@
+            </div>
+         
+    <div class="col-12 col-md-6 mb-4">
+        <div class="position-relative h-100 card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Recent Five Medicine Sales</h5>
+                @*<a href="~/ItemSaleOrder/index?id=@((int)RiderEnums.CategoryTypes.Medicine)">View All</a>*@
+            </div>
+
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    @*@foreach (var item in Model.MedicineSaleOrders)*@
+                    {
+
+
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="d-flex align-items-center">
+                                        <div class="d-flex flex-column">
+                                        @*@if (item.HorseOwner != null)*@
+                                        {
+                                                    @*<h6 class="mb-1 text-dark text-sm">@item.HorseOwner</h6>*@
+                                        }
+                                        else
+                                        {
+                                                    <h6 class="mb-1 text-dark text-sm">Club</h6>
+                                        }
+                                            @*<small class="text-muted">@item.SaleOrderDate</small>*@
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center text-gradient text-sm font-weight-bold ms-auto">
+                                    @*@item.TotalAmount Rs*@
+                                    </div>
+                                </div>
+                            </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--//Page content End//-->
+
+<style>
+    .me-3 {
+        margin-right: 0rem !important;
+    }
+
+    .one-padding {
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+</style>
+
+<script>
+    //var cPrimary = "#2794F9";
+    //var cWarning = "#ffb016";
+    //var cSecondary = "#ff4d62";
+    //var cSuccess = "#43b18e";
+    //var cMuted = "#879099";
+    //var cBodycolor = "#243A50";
+    //var cLight = "#f5f8fb";
+    //var cGray = "#CFDBE7";
+    //var cFont = "inherit";
+    let PackagesName = [];
+    let PackagesPercentage = [];
+    var TotalPackages = 0;
+    var PackagesColors = ['#43b18e', '#ffb016', '#ff4d62', '#CFDBE7', '#243A50', '#2794F9'];
+    $(document).ready(function() {
+        var TimePeriod = $("#PackagesSalesTime").val();
+                    dataLabels: {
+                        total: {
+                            show: true,
+                            label: 'Packages',
+                            color: cMuted,
+                            fontSize: 'inherit',
+                            formatter: function(w) {
+                                return TotalPackages
+                            }
+                        },
+                        name: {
+                            show: true,
+                            offsetY: -8
+                        },
+                        value: {
+                            show: true,
+                            offsetY: 7,
+                            fontSize: '1.75rem',
+                            color: cBodycolor
+                        },
+                    }
+                }
+            },
+            labels: PackagesName,
+        }).render()
+    });
+
+</script>
